@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <h3>Student Enrollent Form</h3>
+        </nav>
+        <div class="formsection">
+            <p class="lead">Please Enter Details of Student:</p><br>
+            <form id="newForm">
+                Name:<br><input type="text" id="name"><br><br>
+                Email:<br><input type="email" id="email"><br><br>
+                Website:<br><input type="text" id="website"><br><br>
+                Image Link:<br><input type="text" id="link"><br><br>
+                Gender:<br><input type="radio" id="gender" name="gender" value="Male"><label>Male</label> &emsp;<input type="radio" id="gender" name="gender" value="Female"><label>Female</label><br><br>
+                Skills:<br><input type="checkbox" id="skills1" value="HTML">HTML &emsp;<input type="checkbox" id="skills2" value="CSS">CSS &emsp;<input type="checkbox" id="skills3" value="JavaScript">JavaScript<br><br>
+                <button type="button" onclick="myFunction()" class="button">Submit</button>&emsp;&emsp;<button type="button" onclick="Reset()" class="button">Reset</button>
+            </form> 
+        </div>
+        <div class="details">
+            <h4>ENROLLED STUDENT</h4>
+            <table id="display">
+                <tr>
+                    <th>Description</th>
+                    <th>Image</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+        <script>
+        function Reset() {
+            document.getElementById("newForm").reset();
+         }
+        function myFunction() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var website = document.getElementById("website").value;
+            var link = document.getElementById("link").value;
+
+            var gen = document.getElementsByName('gender');
+              
+            for(i = 0; i < gen.length; i++) {
+                if(gen[i].checked)
+                var Gender = gen[i].value;
+            }
+            
+            var ski=[];
+            var HTML = document.getElementById("skills1");
+            if(skills1.checked){
+                ski.push(HTML.value);
+            }
+            var CSS = document.getElementById("skills2");
+            if(skills2.checked){
+                ski.push(CSS.value);
+            }
+            var JavaScript = document.getElementById("skills3");
+            if(skills3.checked){
+                ski.push(JavaScript.value);
+            }
+            if(ski.length>0){
+                var skills = ski;
+            }
+
+        var table = document.getElementById("display");
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = "Name:" + name + "<br>Email Id:" + email +"<br>Website:" + website +"<br>Gender:" + Gender + "<br>Skills:" + skills;
+        cell2.innerHTML = "<img src="+ link + ">";
+        }
+        </script>
+</body>
+</html>
